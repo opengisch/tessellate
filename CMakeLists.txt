@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-project(libtess)
+PROJECT(libtess)
 
 SET(TESS_SRC
   dict.c  
@@ -16,10 +16,14 @@ SET(TESS_SRC
   tess.c  
   tessellate.c  
   tessmono.c
-  )
+)
 
-add_library(tess SHARED ${TESS_SRC})
-target_link_libraries(tess m)
+INCLUDE_DIRECTORIES(include)
 
-add_executable(tess_example main.c)
-target_link_libraries(tess_example tess)
+SET (CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
+ADD_LIBRARY(tess STATIC ${TESS_SRC})
+TARGET_LINK_LIBRARIES(tess m)
+
+# ADD_EXECUTABLE(tess_example main.c)
+# TARGET_LINK_LIBRARIES(tess_example tess)
