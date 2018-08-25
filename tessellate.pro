@@ -4,6 +4,8 @@ TARGET = tessellate
 
 CONFIG = staticlib
 
+QMAKE_CFLAGS += -fPIC
+
 SOURCES = dict.c \
   geom.c \
   memalloc.c \
