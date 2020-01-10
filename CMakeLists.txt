@@ -26,8 +26,10 @@ SET (CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 ADD_LIBRARY(tess STATIC ${TESS_SRC})
 IF(NOT MSVC)
-    MESSAGE("We are NOT running msvc -- Linking to libm")
-    TARGET_LINK_LIBRARIES(tess m)
+  MESSAGE("We are NOT running msvc -- Linking to libm")
+  # TARGET_LINK_LIBRARIES(tess m)
+ELSE(NOT MSVC)
+  MESSAGE("We are running msvc -- Not linking to libm")
 ENDIF(NOT MSVC)
 
 
